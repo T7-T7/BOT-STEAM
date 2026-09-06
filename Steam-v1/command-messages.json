@@ -1,0 +1,889 @@
+{
+    "messages": [
+        {
+            "messageId": "3EB0B102DCD5E69DF0CDD7",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788568268032
+        },
+        {
+            "messageId": "3EB0620969A90DE3B17037",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "بحث",
+            "aliases": [
+                "search"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/search.js",
+            "createdAt": 1788568300911
+        },
+        {
+            "messageId": "3EB0BBDB801C192F5AE291",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "بحث",
+            "aliases": [
+                "search"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/search.js",
+            "createdAt": 1788568319391
+        },
+        {
+            "messageId": "3EB0278BB7BA6D2EC78EB6",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788568455067
+        },
+        {
+            "messageId": "3EB0365EEAFED525805F4F",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "استرجاع",
+            "aliases": [
+                "restore"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/restore.js",
+            "createdAt": 1788568509374
+        },
+        {
+            "messageId": "3EB0730446E5D8F20703D1",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788568536795
+        },
+        {
+            "messageId": "3EB0FFD27E8EF78EA885BA",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "بحث",
+            "aliases": [
+                "search"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/search.js",
+            "createdAt": 1788568549253
+        },
+        {
+            "messageId": "3EB0FF99BF4EB8FA67943B",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "استرجاع",
+            "aliases": [
+                "restore"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/restore.js",
+            "createdAt": 1788568579754
+        },
+        {
+            "messageId": "3EB018ADE08A50A01209C2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788568589763
+        },
+        {
+            "messageId": "3EB0F7DB8CB49B6EF5A1DD",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "استرجاع",
+            "aliases": [
+                "restore"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/restore.js",
+            "createdAt": 1788568606681
+        },
+        {
+            "messageId": "3EB0D62D54658472748047",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788569349569
+        },
+        {
+            "messageId": "3EB03C4E59E6F4622FF297",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788569627812
+        },
+        {
+            "messageId": "3EB058AD63ADD42ABF4192",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788569628072
+        },
+        {
+            "messageId": "3EB03C01A568B3B979E265",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788569640724
+        },
+        {
+            "messageId": "3EB0D5CBFC52959A0BC5C5",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788569665619
+        },
+        {
+            "messageId": "3EB03312684554D7A1D4DD",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788569672716
+        },
+        {
+            "messageId": "3EB0AB81574E4372280F87",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788569683921
+        },
+        {
+            "messageId": "3EB0589B2A05EDE3822544",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788569687102
+        },
+        {
+            "messageId": "3EB000DC2EEF6AF84552C2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788569899387
+        },
+        {
+            "messageId": "3EB08D8C38C5C162243D8A",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788569905527
+        },
+        {
+            "messageId": "3EB0C63D178E5DBB107ADD",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788569923166
+        },
+        {
+            "messageId": "3EB00709E2C71A70896FA0",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "سحب",
+            "aliases": [
+                "سحب-نخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/remove-elite.js",
+            "createdAt": 1788569950314
+        },
+        {
+            "messageId": "3EB0D76677B506FFACE405",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788569958474
+        },
+        {
+            "messageId": "3EB0A0BAF2D6898697494C",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "نخبة-عرض",
+            "aliases": [
+                "نخبةعرض"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/elite-list.js",
+            "createdAt": 1788569971266
+        },
+        {
+            "messageId": "3EB0CF360C61EDDC1514B9",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اضف",
+            "aliases": [
+                "اضف-نخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/add-elite.js",
+            "createdAt": 1788570069850
+        },
+        {
+            "messageId": "3EB0BD3847F48A691B1543",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788570078989
+        },
+        {
+            "messageId": "3EB0DA838D95AFCB241681",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "خارج",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/out.js",
+            "createdAt": 1788570122180
+        },
+        {
+            "messageId": "3EB0E98839E858B10A1DC3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "سحب",
+            "aliases": [
+                "سحب-نخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/remove-elite.js",
+            "createdAt": 1788570128817
+        },
+        {
+            "messageId": "3EB03F258D3961D93CF908",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788570134328
+        },
+        {
+            "messageId": "3EB0B66A0EE732F0F88DEF",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788570140195
+        },
+        {
+            "messageId": "3EB0C2AEEA0EC0144C2F22",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788571241461
+        },
+        {
+            "messageId": "3EB0E7DDCF099F1DAEF4F7",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788571253845
+        },
+        {
+            "messageId": "3EB088DDAF74AE48539C94",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788571257328
+        },
+        {
+            "messageId": "3EB06F2B25DB40723857E3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788571270319
+        },
+        {
+            "messageId": "3EB0D58CAA7EBB674A8DEB",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور-نخبة",
+            "aliases": [
+                "مطورنخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder-elite.js",
+            "createdAt": 1788571275101
+        },
+        {
+            "messageId": "3EB06DCC9239AD15CD2FD8",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788571691422
+        },
+        {
+            "messageId": "3EB0CCBD6A7CC47BE337F1",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788572022668
+        },
+        {
+            "messageId": "3EB03E1A57E8CA9D56C9B8",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788572205649
+        },
+        {
+            "messageId": "3EB0246FED205C5A002360",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788573300397
+        },
+        {
+            "messageId": "3EB0AEE22293DED3EED7DF",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788605462131
+        },
+        {
+            "messageId": "3EB0346B30853377E31BBA",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788605463642
+        },
+        {
+            "messageId": "3EB006B025B3F9781131DA",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788606674849
+        },
+        {
+            "messageId": "3EB04C3A29DA2E0CEF918F",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788607915902
+        },
+        {
+            "messageId": "3EB05254D088AD97092542",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788608030673
+        },
+        {
+            "messageId": "3EB0ACB029C551CE47BF56",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788608031135
+        },
+        {
+            "messageId": "3EB04508E0375C98AFA7E3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788608375372
+        },
+        {
+            "messageId": "3EB01459DBC49CB2518255",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "داتا",
+            "aliases": [
+                "data"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/data.js",
+            "createdAt": 1788608509205
+        },
+        {
+            "messageId": "3EB0679D0C33E29C093618",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788608544605
+        },
+        {
+            "messageId": "3EB08BB395FDAD8A50CD41",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788622384165
+        },
+        {
+            "messageId": "3EB0DE11C891B79B8381D2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788624023204
+        },
+        {
+            "messageId": "3EB077CCCB8FCB64C90031",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "نخبة-عرض",
+            "aliases": [
+                "نخبةعرض"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/elite-list.js",
+            "createdAt": 1788624046651
+        },
+        {
+            "messageId": "3EB05EA63983BC892427F0",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788624075947
+        },
+        {
+            "messageId": "3EB0599D7DE0946517E6A3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788624076232
+        },
+        {
+            "messageId": "3EB0A0607EF3761BB7FACB",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور-نخبة",
+            "aliases": [
+                "مطورنخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder-elite.js",
+            "createdAt": 1788624088520
+        },
+        {
+            "messageId": "3EB0DA820BA0352D2D2EC5",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "استرجاع",
+            "aliases": [
+                "restore"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/restore.js",
+            "createdAt": 1788624096275
+        },
+        {
+            "messageId": "3EB012E791D29FC45EE15E",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "بحث",
+            "aliases": [
+                "search"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/search.js",
+            "createdAt": 1788624097930
+        },
+        {
+            "messageId": "3EB08B75443C74B1E04959",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788624104488
+        },
+        {
+            "messageId": "3EB0F348284254F3965B04",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مطور",
+            "aliases": [],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/moder.js",
+            "createdAt": 1788624109842
+        },
+        {
+            "messageId": "3EB04E708023FC721B8CF2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788624121969
+        },
+        {
+            "messageId": "3EB02AC732A9DC6FD375E9",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788624139103
+        },
+        {
+            "messageId": "3EB0C70356F335739127E7",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788626375359
+        },
+        {
+            "messageId": "3EB0357A797CAEB3EC7D35",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629099839
+        },
+        {
+            "messageId": "3EB086D2040478EAF019EB",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629299192
+        },
+        {
+            "messageId": "3EB05863B8771E5B0529A4",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629398842
+        },
+        {
+            "messageId": "3EB01DB6D6B33A7F646A15",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629406797
+        },
+        {
+            "messageId": "3EB095C27014E21FD40B15",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629412123
+        },
+        {
+            "messageId": "3EB00DB6C2EBF11AC710F9",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "داتا",
+            "aliases": [
+                "data"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/data.js",
+            "createdAt": 1788629414678
+        },
+        {
+            "messageId": "3EB061FD85B3B304E4EFD3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788629955169
+        },
+        {
+            "messageId": "3EB083F419DA1D1401CB03",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788631202868
+        },
+        {
+            "messageId": "3EB0CE30D99151F2F2A416",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788631249710
+        },
+        {
+            "messageId": "3EB066A0454BB10A6AFBDB",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "ping",
+            "aliases": [
+                "بنق"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/ping.js",
+            "createdAt": 1788638484215
+        },
+        {
+            "messageId": "3EB0B403D30BC9FD815A2B",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اضف",
+            "aliases": [
+                "اضف-نخبة"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/add-elite.js",
+            "createdAt": 1788638521520
+        },
+        {
+            "messageId": "3EB0B1BB912E023B58CBC1",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788638551938
+        },
+        {
+            "messageId": "3EB0E0DAA563B9AC9F0314",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "حذف",
+            "aliases": [
+                "delete"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/delete.js",
+            "createdAt": 1788638560632
+        },
+        {
+            "messageId": "3EB0749FD609C356DE1663",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "بحث",
+            "aliases": [
+                "search"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/search.js",
+            "createdAt": 1788638575356
+        },
+        {
+            "messageId": "3EB0A2F482207669BF1932",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "استرجاع",
+            "aliases": [
+                "restore"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/restore.js",
+            "createdAt": 1788638598415
+        },
+        {
+            "messageId": "3EB0E0C9938B67D37EC1E6",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788638606449
+        },
+        {
+            "messageId": "3EB09CD696492430E62899",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "داتا",
+            "aliases": [
+                "data"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/data.js",
+            "createdAt": 1788638609923
+        },
+        {
+            "messageId": "3EB006F17E0023215D129E",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "اوامر",
+            "aliases": [
+                "أوامر",
+                "commands"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/public/commands.js",
+            "createdAt": 1788641990062
+        },
+        {
+            "messageId": "3EB0B458313915C45130BB",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788643786772
+        },
+        {
+            "messageId": "3EB02103599CB7B4EFB1B2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788643788011
+        },
+        {
+            "messageId": "3EB0910D55AE97B624CFB3",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788644037695
+        },
+        {
+            "messageId": "3EB0DFB275575C2E3C0DD2",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788644058160
+        },
+        {
+            "messageId": "3EB0D9BF1AE611D060507D",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788644059508
+        },
+        {
+            "messageId": "3EB0B7B99D0BE13CEB1E36",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788644134188
+        },
+        {
+            "messageId": "3EB0D4B0471152A0D3DB74",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788644158984
+        },
+        {
+            "messageId": "3EB081A7D54AFA1C079598",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "مكتبات",
+            "aliases": [
+                "libraries",
+                "lib"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/libraries.js",
+            "createdAt": 1788644159483
+        },
+        {
+            "messageId": "3EB0015099BFFCA5100824",
+            "chatId": "120363423469916736@g.us",
+            "commandName": "باتش",
+            "aliases": [
+                "patch"
+            ],
+            "filePath": "/data/data/com.termux/files/home/FIX-BOT-V1/commands/developer/patch.js",
+            "createdAt": 1788644166644
+        }
+    ]
+}

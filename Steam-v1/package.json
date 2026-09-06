@@ -1,0 +1,22 @@
+{
+  "name": "fix-bot-v1",
+  "version": "1.0.0",
+  "description": "FIX BOT V1",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "adm-zip": "^0.6.0",
+    "baileys_helper": "^1.0.6",
+    "boxen": "^5.1.2",
+    "cfonts": "^3.3.0",
+    "chalk": "^4.1.2",
+    "pino": "^10.3.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "ping": "public",
+    "داتا": "public",
+    "اوامر": "public",
+    "اعدادات": "developer",
+    "مطور": "developer",
+    "خارج": "developer",
+    "اضف": "developer",
+    "سحب": "developer",
+    "نخبة-عرض": "developer",
+    "مطور-نخبة": "developer",
+    "حذف": "developer",
+    "باتش": "developer_elite",
+    "p": "developer_elite",
+    "مكتبات": "developer_elite",
+    "بحث": "developer",
+    "استرجاع": "developer"
+}

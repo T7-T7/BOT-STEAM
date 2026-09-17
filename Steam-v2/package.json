@@ -1,0 +1,20 @@
+{
+  "name": "steam-bot-v2",
+  "version": "2.0.0",
+  "description": "STEAM BOT V2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tests/smoke.js",
+    "setup": "bash install.sh"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "@hapi/boom": "^10.0.1",
+    "pino": "^9.5.0"
+  }
+}

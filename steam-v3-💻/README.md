@@ -33,27 +33,29 @@
 
 ```bash
 termux-setup-storage
+
 pkg update -y && pkg install nodejs-lts -y
+
 pkg install wget unzip -y
 ```
 
 <div dir="rtl">
 
-> `termux-setup-storage` تُنفَّذ مرة واحدة فقط، وستظهر رسالة طلب صلاحية الملفات، اضغط **سماح**.
+> `termux-setup-storage` تُنفَّذ مرة واحدة فقط، وستظهر رسالة طلب صلاحية الملفات، اضغط *y**.
 
 **2️⃣ فك ضغط المشروع**
 
 </div>
 
 ```bash
-mkdir -p ~/bot
-unzip ~/storage/downloads/STEAM-BOT-v3-6.zip -d ~/bot/
+mkdir bot
+unzip ~/storage/downloads/Telegram/STEAM-BOT-v3-6.zip -d ~/bot/
 cd ~/bot
 ```
 
 <div dir="rtl">
 
-> تأكد أنك داخل المجلد الصحيح بالأمر `ls`، يجب أن ترى `package.json` و`index.js`. لو ظهر مجلد واحد فقط، ادخل إليه بـ `cd` ثم كرّر `ls`.
+> تأكد أنك داخل المجلد الصحيح `bot` بالأمر `ls`، يجب أن ترى `package.json` و`index.js`. لو ظهر مجلد واحد فقط، ادخل إليه بـ `cd` ثم كرّر `ls`.
 
 **3️⃣ تثبيت المكتبات والاختبار**
 
@@ -61,8 +63,12 @@ cd ~/bot
 
 ```bash
 pkg install nodejs-lts zip -y
+
 npm ci
+
 npm test
+
+npm start
 ```
 
 <div dir="rtl">
@@ -88,10 +94,7 @@ nano .env
 ```
 
 ```env
-DEVELOPERS=201000000000
-MAIN_OWNERS=201000000000
-OWNERS=
-PHONE_NUMBER=201000000000
+DEVELOPERS=201xxxxxxxxx
 ```
 
 ```bash
@@ -144,7 +147,7 @@ npm start
 | 💎 | **نخبة** | أوامر خاصة يمنحها المطوّر |
 | 👤 | **مستخدم** | الأوامر العامة |
 
-اكتب رقمك في ملف `env` ليعرفك بوت ك مطور
+اكتب رقمك في ملف `.env` ليعرفك بوت ك مطور
 
 ---
 

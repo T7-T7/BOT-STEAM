@@ -121,14 +121,14 @@ graph LR
 ### الطريقة 1 — تحميل مباشر
 
 ```bash
-curl -O https://raw.githubusercontent.com/T7-T7/BOT-STEAM/main/Orbit/Project.html
+curl -O https://raw.githubusercontent.com/T7-T7/BOT-STEAM/main/Orbit/orbit.html
 ```
 
 أو من المتصفح:
 
 <div align="center">
 
-[![تحميل](https://img.shields.io/badge/تحميل-Project.html-5B88B2?style=for-the-badge&labelColor=122C4F&logo=github&logoColor=FBF9E4)](../../raw/main/Orbit/Project.html)
+[![تحميل](https://img.shields.io/badge/تحميل-orbit.html-5B88B2?style=for-the-badge&labelColor=122C4F&logo=github&logoColor=FBF9E4)](../../raw/main/Orbit/orbit.html)
 
 </div>
 
@@ -143,7 +143,7 @@ cd BOT-STEAM/Orbit
 
 1. اضغط **Code** → **Download ZIP**
 2. فك الضغط في أي مكان
-3. افتح `Project.html` في المتصفح
+3. افتح `orbit.html` في المتصفح
 
 > [!TIP]
 > ### ⚡ للأداء الأفضل
@@ -156,7 +156,7 @@ cd BOT-STEAM/Orbit
 > npx serve
 > ```
 >
-> ثم افتح: `http://localhost:8000/Project.html`
+> ثم افتح: `http://localhost:8000/orbit.html`
 
 ---
 
@@ -173,7 +173,7 @@ cd BOT-STEAM/Orbit
 
 ```
 📂 Orbit/
-├── 📄 Project.html    ← افتح هذا
+├── 📄 orbit.html    ← افتح هذا
 ├── 📄 index.html
 ├── 📁 css/
 └── 📁 js/
@@ -261,14 +261,14 @@ cd BOT-STEAM/Orbit
 
 ```
 ┌─────────────────────────────────────────────┐
-│              Project.html                    │
-│         ملف واحد — صفر تبعيات               │
+│              orbit.html                     │
+│          ملف واحد — صفر تبعيات                  │
 ├─────────────────────────────────────────────┤
 │   HTML5 · CSS3 · Vanilla JS (ES6+)          │
 │   Fetch API · DOMParser · LocalStorage      │
 ├─────────────────────────────────────────────┤
 │         GitHub REST API v3                  │
-│         اتصال مباشر — لا وسطاء              │
+│         اتصال مباشر — لا وسطاء                   │
 └─────────────────────────────────────────────┘
 ```
 
@@ -294,7 +294,7 @@ cd BOT-STEAM/Orbit
 ```bash
 python -m http.server 8000
 ```
-ثم افتح `http://localhost:8000/Project.html`
+ثم افتح `http://localhost:8000/orbit.html`
 
 أو استخدم زر **"اختر ملفات"** أو **"اختر مجلد"**.
 
@@ -417,7 +417,7 @@ var · callback hell · global variables · eval() · innerHTML مع مدخلا�
 
 ---
 
-**صُنع بواسطة Yousef "Fix⚜️"**
+**صُنع بواسطة Fix "Yousef⚜️"**
 
 <sub><strong>Orbit</strong> © 2026 — [MIT License](LICENSE)</sub>
 

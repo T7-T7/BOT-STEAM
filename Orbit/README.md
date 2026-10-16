@@ -4,7 +4,7 @@
 
 **ارفع مشروعك كامل إلى GitHub — من المتصفح، بدون سيرفر، بدون مكتبات، بدون تعقيد.**
 
-[![الترخيص](https://img.shields.io/badge/الترخيص-MIT-5B88B2?style=for-the-badge&labelColor=122C4F)](LICENSE)
+[![الت](https://img.shields.io/badge/الترخيص-MIT-5B88B2?style=for-the-badge&labelColor=122C4F)](LICENSE)
 [![الإصدار](https://img.shields.io/badge/الإصدار-3.0.4-5B88B2?style=for-the-badge&labelColor=122C4F)](../../releases)
 [![الحالة](https://img.shields.io/badge/الحالة-مستقر-6EE7B7?style=for-the-badge&labelColor=122C4F)](#)
 [![ملف واحد](https://img.shields.io/badge/ملف_واحد-نعم-FBF9E4?style=for-the-badge&labelColor=122C4F)](#)

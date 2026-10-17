@@ -1,6 +1,5 @@
 <div align="center">
-    
-  <img src="
+  <!-- قم بحفظ اللوجو الخاص بك باسم logo.png في نفس المجلد -->
   <img src="logo.png" width="180" alt="Orbit Logo" style="border-radius: 20px;">
   <br><br>
   

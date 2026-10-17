@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=overlays-content">
+<meta name="theme-color" content="#000000">
+<title>Orbit · ارفع مشروعك إلى السحابة</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/orbit-icons.css">
+<link rel="stylesheet" href="css/orbit.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="#" class="brand">
+      <div class="brand-logo"><img src="logo.svg" alt="Orbit"></div>
+      <span class="brand-name">Orbit</span>
+      <span class="brand-sub">· ارفع مشروعك إلى السحابة</span>
+    </a>
+    <div class="header-right">
+      <span class="badge accent hidden" id="rateBadge" title="Rate limit">
+        <i class="oi oi-lightning"></i>
+        <span><b id="rateRemaining">—</b>/<span id="rateLimit">—</span></span>
+      </span>
+      <span class="badge" id="headerBadge">
+        <i class="oi oi-shield"></i>
+        <span id="headerBadgeText">جاهز</span>
+      </span>
+      <button class="icon-btn" id="settingsBtn" type="button" title="الإعدادات"><i class="oi oi-settings"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <div class="container">
+    <nav class="tabs" id="tabsNav">
+      <button class="tab active" data-tab="setup" type="button"><i class="oi oi-settings"></i><span>الإعداد</span></button>
+      <button class="tab" data-tab="upload" type="button"><i class="oi oi-upload"></i><span>الرفع</span><span class="cnt hidden" id="uploadTabCount">0</span></button>
+      <button class="tab" data-tab="remote" type="button"><i class="oi oi-lightning"></i><span>التحكم</span><span class="cnt hidden" id="remoteTabCount">0</span></button>
+      <button class="tab" data-tab="pulls" type="button"><i class="oi oi-pr"></i><span>الطلبات</span><span class="cnt hidden" id="pullsTabCount">0</span></button>
+      <button class="tab" data-tab="issues" type="button"><i class="oi oi-issue"></i><span>البلاغات</span><span class="cnt hidden" id="issuesTabCount">0</span></button>
+      <button class="tab" data-tab="releases" type="button"><i class="oi oi-tag"></i><span>الإصدارات</span><span class="cnt hidden" id="releasesTabCount">0</span></button>
+      <button class="tab" data-tab="logs" type="button"><i class="oi oi-terminal"></i><span>الأحداث</span></button>
+    </nav>
+  </div>
+</div>
+
+<div class="offline-banner" id="offlineBanner">
+  <i class="oi oi-wifi-off"></i>
+  <span>أنت غير متصل — بعض الميزات تحتاج إنترنت.</span>
+</div>
+
+<main class="container">
+
+<section class="panel active" data-panel="setup">
+  <div class="panel-head">
+    <div class="head-txt">
+      <h1 class="panel-title"><i class="oi oi-settings"></i><span>الإعداد</span></h1>
+      <p class="panel-desc">هيّئ مفتاح الوصول واختر مستودعك.</p>
+    </div>
+  </div>
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-key"></i><span>مفتاح الوصول</span></h2>
+      <button class="btn btn-default btn-sm" id="checkTokenBtn" type="button"><i class="oi oi-check"></i><span>تحقق</span></button>
+    </div>
+    <div class="box-body">
+      <div class="saved-banner" id="savedBanner">
+        <div class="icon-box"><i class="oi oi-check-circle"></i></div>
+        <div class="text"><strong>تم استرجاع المفتاح المحفوظ</strong><span class="sub" id="savedBannerText">—</span></div>
+        <button class="btn btn-default btn-sm" id="clearSavedTokenBtn" type="button"><i class="oi oi-trash"></i></button>
+      </div>
+      <div class="flash flash-info"><i class="oi oi-shield"></i><div>المفتاح يبقى في ذاكرة المتصفح فقط افتراضيًا — لا يُخزَّن إلا بموافقتك.</div></div>
+      <label class="form-label" for="tokenInput">GitHub Personal Access Token <span class="req">*</span></label>
+      <div class="token-field" id="tokenField">
+        <div class="token-icon"><i class="oi oi-key"></i></div>
+        <input id="tokenInput" class="token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false" dir="ltr">
+        <div class="token-status"><span class="dot-live"></span></div>
+        <button class="token-eye" id="toggleTokenBtn" type="button"><i class="oi oi-eye"></i></button>
+      </div>
+      <div class="token-hint"><span>أنشئ مفتاحًا من</span><a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer">github.com/settings/tokens</a><span>— الصلاحية: <code>repo</code></span></div>
+      <div class="token-scopes" id="tokenScopes"></div>
+      <div class="remember-row" id="rememberRow">
+        <label class="chk"><input type="checkbox" id="rememberToken"></label>
+        <div class="text"><strong>تذكّر المفتاح لمدة 30 يومًا</strong><span>سيُحفظ المفتاح في تخزين المتصفح. فعّله فقط على الأجهزة الموثوقة.</span></div>
+      </div>
+      <div class="flash flash-danger hidden" id="rememberWarning" style="margin-top:12px"><i class="oi oi-alert"></i><div><strong>تحذير أمني:</strong> سيُحفظ المفتاح في تخزين المتصفح. استخدم Fine-grained Token مقيّد بمستودع واحد.</div></div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-branch"></i><span>المستودعات</span></h2>
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm" id="refreshReposBtn" type="button"><i class="oi oi-search"></i><span>تحديث</span></button>
+        <button class="btn btn-primary btn-sm" id="newRepoBtn" type="button"><i class="oi oi-plus"></i><span>مستودع جديد</span></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="flash flash-info"><i class="oi oi-info-circle"></i><div>بعد التحقق من التوكن، سيتم تحميل <strong>قائمة كل مستودعاتك</strong> تلقائيًا.</div></div>
+      <div class="form-group">
+        <label class="form-label">المستودع النشط</label>
+        <button type="button" class="picker-btn" id="repoPickerBtn">
+          <span class="picker-value" id="repoPickerValue"><i class="oi oi-branch"></i><span class="picker-text" id="repoPickerText">لم يتم التحميل بعد</span></span>
+          <i class="oi oi-chevron-down"></i>
+        </button>
+        <small class="form-hint" id="repoMetaHint">—</small>
+      </div>
+      <div class="form-group hidden" id="createRepoGroup">
+        <label class="form-label" for="newRepoNameInput">اسم مستودع جديد <span class="req">*</span></label>
+        <div class="input-group"><span class="prefix" id="ownerPrefixCreate">owner /</span><input id="newRepoNameInput" type="text" placeholder="my-website" autocomplete="off" spellcheck="false" dir="ltr"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">الخصوصية (للمستودعات الجديدة)</label>
+        <div class="segmented">
+          <input type="radio" name="visibility" id="visPrivate" checked><label for="visPrivate"><i class="oi oi-lock"></i><span>خاص</span></label>
+          <input type="radio" name="visibility" id="visPublic"><label for="visPublic"><i class="oi oi-globe"></i><span>عام</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="commitInput">رسالة الـ Commit</label>
+        <input id="commitInput" type="text" placeholder="Initial commit" autocomplete="off" dir="ltr">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" data-panel="upload">
+  <div class="panel-head">
+    <div class="head-txt">
+      <h1 class="panel-title"><i class="oi oi-upload"></i><span>رفع الملفات</span></h1>
+      <p class="panel-desc">اختر مستودعًا وفولدرًا، ثم اختر ملفاتك وابدأ الرفع.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-header"><h2 class="box-title"><i class="oi oi-branch"></i><span>الوجهة</span></h2></div>
+    <div class="box-body">
+      <div class="form-group">
+        <label class="form-label">المستودع الهدف <span class="req">*</span></label>
+        <button type="button" class="picker-btn" id="uploadRepoPickerBtn">
+          <span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="uploadRepoText">لم يتم اختيار مستودع</span></span>
+          <i class="oi oi-chevron-down"></i>
+        </button>
+        <small class="form-hint" id="uploadRepoHint">اختر المستودع الذي تريد الرفع فيه.</small>
+      </div>
+      <div class="form-group">
+        <label class="form-label">المجلد الهدف</label>
+        <button type="button" class="picker-btn" id="uploadFolderPickerBtn">
+          <span class="picker-value"><i class="oi oi-folder"></i><span class="picker-text" id="uploadFolderText">الجذر (/)</span></span>
+          <i class="oi oi-chevron-down"></i>
+        </button>
+        <small class="form-hint">اتركه على الجذر أو اختر مجلدًا — يدعم الفولدرات المتداخلة.</small>
+      </div>
+      <div class="path-preview"><span class="label">سيتم الرفع إلى</span><span class="value" id="pathPreviewValue">—</span></div>
+    </div>
+  </div>
+
+  <!-- ⭐ اختيار الملفات — مع أزرار الإدارة الجديدة -->
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-files"></i><span>اختيار الملفات</span></h2>
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm" id="selectAllBtn" type="button" disabled><i class="oi oi-check-square"></i><span>تحديد كل</span></button>
+        <button class="btn btn-default btn-sm" id="deselectAllBtn" type="button" disabled><i class="oi oi-square"></i><span>إلغاء كل</span></button>
+        <button class="btn btn-default btn-sm" id="deleteModeBtn" type="button" disabled title="وضع الحذف"><i class="oi oi-trash"></i></button>
+        <button class="btn btn-danger btn-sm hidden" id="confirmDeleteBtn" type="button"><i class="oi oi-trash"></i><span>حذف</span></button>
+      </div>
+    </div>
+    <div class="box-body flush">
+      <div style="padding:16px">
+        <div class="btn-group">
+          <button class="btn btn-primary" id="pickFilesBtn" type="button"><i class="oi oi-files"></i><span>اختر ملفات</span></button>
+          <button class="btn btn-default" id="pickFolderBtn" type="button"><i class="oi oi-folder"></i><span>اختر مجلد</span></button>
+        </div>
+        <label class="chk" style="margin-top:14px"><input type="checkbox" id="optKeepRoot"><span>احتفظ باسم المجلد الأصلي</span></label>
+      </div>
+      <div class="flash flash-danger hidden" id="deleteModeBanner" style="margin:0 16px 14px">
+        <i class="oi oi-alert"></i>
+        <div><strong>وضع الحذف مُفعَّل.</strong> حدد الملفات التي تريد حذفها من القائمة، ثم اضغط "حذف".</div>
+      </div>
+      <div class="sel-summary hidden" id="selSummary">
+        <div class="icon-box"><i class="oi oi-check-circle"></i></div>
+        <div class="text"><div class="title" id="selTitle">0</div><div class="sub" id="selSub">—</div></div>
+      </div>
+      <div id="treeSection" class="hidden"><div style="padding:0 16px 16px"><div class="tree-wrap" id="tree"></div></div><div class="stats" id="stats"></div></div>
+      <div id="emptyState" class="box-body" style="padding-top:0">
+        <div class="empty"><i class="oi oi-search"></i><div class="empty-title">لم يتم اختيار ملفات</div><div class="empty-desc">اضغط «اختر ملفات» أو «اختر مجلد» للبدء.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⭐ الرفع النهائي — مع خيار ZIP -->
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-rocket"></i><span>الرفع النهائي</span></h2>
+      <span class="text-muted" style="font-size:11.5px" id="uploadSummary">—</span>
+    </div>
+    <div class="box-body">
+
+      <div class="upload-mode-grid">
+        <label class="upload-mode-card active" id="uploadModeFilesCard">
+          <input type="radio" name="uploadMode" value="files" checked>
+          <i class="oi oi-files"></i>
+          <div class="upload-mode-text">
+            <strong>رفع فردي</strong>
+            <span>كل ملف في مساره الأصلي</span>
+          </div>
+        </label>
+        <label class="upload-mode-card" id="uploadModeZipCard">
+          <input type="radio" name="uploadMode" value="zip">
+          <i class="oi oi-package"></i>
+          <div class="upload-mode-text">
+            <strong>رفع كـ ZIP</strong>
+            <span>ضغط الكل في ملف واحد — أسرع للمشاريع الكبيرة</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="zip-name-row hidden" id="zipNameRow">
+        <label class="form-label" for="zipNameInput">اسم الملف المضغوط</label>
+        <div class="input-group">
+          <span class="prefix"><i class="oi oi-package"></i></span>
+          <input id="zipNameInput" type="text" placeholder="project-files" dir="ltr" autocomplete="off">
+          <span class="prefix" style="border-inline-start:1px solid var(--border-subtle);border-inline-end:none">.zip</span>
+        </div>
+        <small class="form-hint">سيتم ضغط كل الملفات المحددة في هذا الملف الواحد.</small>
+      </div>
+
+      <button class="btn btn-primary btn-lg btn-block" id="uploadBtn" type="button" disabled><i class="oi oi-rocket"></i><span>ابدأ الرفع</span></button>
+      <div class="progress-meta" style="margin-top:18px"><span class="label" id="progressLabel">في الانتظار</span><span class="pct" id="progressPct">0%</span></div>
+      <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+      <div class="progress-file" id="progressFile">—</div>
+      <div class="result" id="resultBox"><div class="result-title"><i class="oi oi-check-circle"></i><span>تم الرفع بنجاح</span></div><div class="result-url" id="resultUrl"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" data-panel="remote">
+  <div class="panel-head">
+    <div class="head-txt">
+      <h1 class="panel-title"><i class="oi oi-lightning"></i><span>التحكم بالمستودع</span></h1>
+      <p class="panel-desc">تصفّح، عدّل، انسخ، انقل، وأنشئ ملفات ومجلدات داخل مستودعك.</p>
+    </div>
+    <div class="btn-group"><div class="repo-chip"><i class="oi oi-branch"></i><span id="activeRepoChipText">—</span></div></div>
+  </div>
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-branch"></i><span>الفروع</span></h2>
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm" id="loadBranchesBtn" type="button"><i class="oi oi-search"></i><span>تحميل</span></button>
+        <button class="btn btn-primary btn-sm" id="newBranchBtn" type="button"><i class="oi oi-git-branch-plus"></i><span>فرع جديد</span></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="form-group">
+        <label class="form-label">الفرع الحالي</label>
+        <button type="button" class="picker-btn" id="branchPickerBtn">
+          <span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="branchPickerText">main</span></span>
+          <i class="oi oi-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="box-header">
+      <h2 class="box-title"><i class="oi oi-folder"></i><span>محتوى المستودع</span></h2>
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm" id="loadRepoBtn" type="button"><i class="oi oi-search"></i><span>تحميل</span></button>
+        <button class="btn btn-default btn-sm" id="newFileBtn" type="button" disabled><i class="oi oi-plus"></i><span>ملف جديد</span></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div id="repoToolsStatus"><div class="empty"><i class="oi oi-lightning"></i><div class="empty-title">لم يتم التحميل بعد</div><div class="empty-desc">اختر مستودعًا من الإعداد ثم اضغط «تحميل».</div></div></div>
+      <div id="repoTreeSection" class="hidden" style="margin-top:14px"><div class="tree-wrap" id="repoTree"></div><div class="stats" id="repoStats"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" data-panel="pulls">
+  <div class="panel-head">
+    <div class="head-txt"><h1 class="panel-title"><i class="oi oi-pr"></i><span>طلبات السحب</span></h1><p class="panel-desc">أنشئ، راجع، ادمج أو أغلق Pull Requests.</p></div>
+    <div class="btn-group">
+      <button class="btn btn-default btn-sm" id="prStateBtn" type="button"><i class="oi oi-info"></i><span id="prStateText">مفتوحة</span><i class="oi oi-chevron-down"></i></button>
+      <button class="btn btn-default btn-sm" id="loadPRsBtn" type="button"><i class="oi oi-search"></i><span>تحميل</span></button>
+      <button class="btn btn-primary btn-sm" id="newPRBtn" type="button"><i class="oi oi-plus"></i><span>طلب جديد</span></button>
+    </div>
+  </div>
+  <div class="box"><div class="box-body flush"><div class="list" id="prList"><div class="empty"><i class="oi oi-pr"></i><div class="empty-title">لم يتم تحميل الطلبات</div></div></div></div></div>
+</section>
+
+<section class="panel" data-panel="issues">
+  <div class="panel-head">
+    <div class="head-txt"><h1 class="panel-title"><i class="oi oi-issue"></i><span>البلاغات</span></h1><p class="panel-desc">أنشئ وأدر Issues في المستودع.</p></div>
+    <div class="btn-group">
+      <button class="btn btn-default btn-sm" id="issueStateBtn" type="button"><i class="oi oi-info"></i><span id="issueStateText">مفتوحة</span><i class="oi oi-chevron-down"></i></button>
+      <button class="btn btn-default btn-sm" id="loadIssuesBtn" type="button"><i class="oi oi-search"></i><span>تحميل</span></button>
+      <button class="btn btn-primary btn-sm" id="newIssueBtn" type="button"><i class="oi oi-plus"></i><span>بلاغ جديد</span></button>
+    </div>
+  </div>
+  <div class="box"><div class="box-body flush"><div class="list" id="issueList"><div class="empty"><i class="oi oi-issue"></i><div class="empty-title">لم يتم تحميل البلاغات</div></div></div></div></div>
+</section>
+
+<section class="panel" data-panel="releases">
+  <div class="panel-head">
+    <div class="head-txt"><h1 class="panel-title"><i class="oi oi-tag"></i><span>الإصدارات</span></h1><p class="panel-desc">أنشئ وأدر إصدارات المستودع.</p></div>
+    <div class="btn-group">
+      <button class="btn btn-default btn-sm" id="loadReleasesBtn" type="button"><i class="oi oi-search"></i><span>تحميل</span></button>
+      <button class="btn btn-primary btn-sm" id="newReleaseBtn" type="button"><i class="oi oi-plus"></i><span>إصدار جديد</span></button>
+    </div>
+  </div>
+  <div class="box"><div class="box-body flush"><div class="list" id="releaseList"><div class="empty"><i class="oi oi-tag"></i><div class="empty-title">لم يتم تحميل الإصدارات</div></div></div></div></div>
+</section>
+
+<section class="panel" data-panel="logs">
+  <div class="panel-head">
+    <div class="head-txt"><h1 class="panel-title"><i class="oi oi-terminal"></i><span>سجل الأحداث</span></h1><p class="panel-desc">عرض مباشر لكل إجراء في هذه الجلسة.</p></div>
+    <div class="btn-group">
+      <button class="btn btn-default btn-sm" id="downloadLogsBtn" type="button"><i class="oi oi-download"></i><span>تنزيل</span></button>
+      <button class="btn btn-default btn-sm" id="clearLogsBtn" type="button"><i class="oi oi-trash"></i><span>مسح</span></button>
+    </div>
+  </div>
+  <div class="box"><div class="box-body flush"><div class="log" id="log"></div></div></div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span style="display:flex;align-items:center;gap:8px"><span class="brand-logo"><img src="logo.svg" alt="Orbit"></span><span>Orbit</span></span>
+    <span id="footerStatus">v2.2.0</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     Settings Drawer
+     ═══════════════════════════════════════════════════════════ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="settingsDrawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h3 class="drawer-title"><i class="oi oi-settings"></i><span>الإعدادات</span></h3>
+    <button class="modal-close" id="settingsCloseBtn" type="button" aria-label="إغلاق"><i class="oi oi-x"></i></button>
+  </div>
+  <div class="drawer-body">
+
+    <div class="drawer-section" data-section="theme">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-moon"></i><span>المظهر</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="theme-grid">
+          <button class="theme-card" type="button" data-theme-choice="dark"><i class="oi oi-moon"></i><span class="theme-card-title">ليلي</span></button>
+          <button class="theme-card" type="button" data-theme-choice="light"><i class="oi oi-sun"></i><span class="theme-card-title">نهاري</span></button>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="archive">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-history"></i><span>سجل العمليات</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="drawer-actions">
+          <button class="drawer-action-btn" type="button" id="drawerArchiveExport"><i class="oi oi-download"></i><span>تصدير</span></button>
+          <button class="drawer-action-btn danger" type="button" id="drawerArchiveClear"><i class="oi oi-trash"></i><span>مسح</span></button>
+        </div>
+        <div class="drawer-archive-list" id="drawerArchiveList"><div class="drawer-empty-mini">لا توجد عمليات بعد</div></div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="guide">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-book"></i><span>دليل الاستخدام</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="guide-list">
+          <div class="guide-item"><div class="guide-num">1</div><div class="guide-body"><div class="guide-title">الإعداد</div><div class="guide-desc">أدخل <strong>التوكن</strong> من GitHub واضغط "تحقق" لتحميل مستودعاتك تلقائيًا.</div></div></div>
+          <div class="guide-item"><div class="guide-num">2</div><div class="guide-body"><div class="guide-title">الرفع</div><div class="guide-desc">اختر <strong>المستودع</strong> ثم <strong>المجلد</strong> ثم ملفاتك وابدأ الرفع.</div></div></div>
+          <div class="guide-item"><div class="guide-num">3</div><div class="guide-body"><div class="guide-title">التحكم</div><div class="guide-desc">تصفح، عدّل، انسخ، انقل، أعد تسمية، واحذف <strong>الملفات والمجلدات</strong>.</div></div></div>
+          <div class="guide-item"><div class="guide-num">4</div><div class="guide-body"><div class="guide-title">الطلبات والبلاغات</div><div class="guide-desc">أنشئ Pull Requests و Issues مباشرة من داخل التطبيق.</div></div></div>
+          <div class="guide-item"><div class="guide-num">5</div><div class="guide-body"><div class="guide-title">الإصدارات</div><div class="guide-desc">أنشئ Releases بـ tag مثل <code>v1.0.0</code> — مسودة أو pre-release.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="privacy">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-shield-check"></i><span>سياسة الخصوصية</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="policy-list">
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-info-circle"></i><span>مقدمة</span></div>
+            <p class="policy-paragraph">توضح هذه السياسة كيفية تعامل Orbit مع بياناتك. نحترم خصوصيتك ونلتزم بحماية معلوماتك — لا نجمع، لا نرسل، لا نشارك أي شيء مع أي طرف ثالث.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title ok"><i class="oi oi-x-circle"></i><span>ما لا نفعله</span></div>
+            <ul class="policy-items">
+              <li><strong>لا نجمع بيانات شخصية</strong> — لا اسم، لا إيميل، لا شيء</li>
+              <li><strong>لا نملك سيرفرات</strong> — لا مكان نخزن فيه بياناتك</li>
+              <li><strong>لا نستخدم تحليلات</strong> — لا Google Analytics ولا غيرها</li>
+              <li><strong>لا نستخدم كوكيز تتبع</strong> — لا شيء من هذا القبيل</li>
+              <li><strong>لا نشارك بياناتك</strong> — لأننا أساسًا لا نملكها</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-key"></i><span>التوكن الخاص بك</span></div>
+            <ul class="policy-items">
+              <li>يبقى في <strong>ذاكرة المتصفح فقط</strong> افتراضيًا</li>
+              <li>يُرسل فقط إلى <code>api.github.com</code> — ولا مكان آخر</li>
+              <li>يُشفَّر قبل حفظه محليًا (إن اخترت "تذكرني")</li>
+              <li>يمكنك مسحه في أي وقت بضغطة واحدة</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-package"></i><span>ما يُخزَّن محليًا</span></div>
+            <ul class="policy-items">
+              <li>سجل العمليات — يمكنك حذفه من هذا القسم</li>
+              <li>تفضيلات المظهر (ليلي / نهاري)</li>
+              <li>المستودع النشط</li>
+              <li>التوكن المشفّر (إن فعّلت التذكر)</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title ok"><i class="oi oi-check-square"></i><span>تحقق بنفسك</span></div>
+            <ul class="policy-items">
+              <li>افتح <strong>DevTools → Network</strong></li>
+              <li>سترى أن الاتصالات كلها إلى <code>api.github.com</code> فقط</li>
+              <li>الكود مفتوح بالكامل — راجعه بنفسك</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title warn"><i class="oi oi-alert"></i><span>تنبيه أمني</span></div>
+            <p class="policy-paragraph">احرص على استخدام <strong>جهاز موثوق</strong> عند تفعيل "تذكر التوكن". يُفضَّل استخدام Fine-grained Token مقيّد بمستودع واحد لتقليل المخاطر.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title"><i class="oi oi-clock"></i><span>آخر تحديث</span></div>
+            <p class="policy-paragraph">آخر تحديث للسياسة: 2026. أي تغييرات ستظهر هنا تلقائيًا.</p>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="terms">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-scale"></i><span>الأحكام والشروط</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="policy-list">
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-file-text"></i><span>قبول الشروط</span></div>
+            <p class="policy-paragraph">باستخدامك تطبيق Orbit، فإنك توافق على هذه الشروط. إن لم تكن موافقًا، يرجى التوقف عن الاستخدام.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-info-circle"></i><span>وصف الخدمة</span></div>
+            <p class="policy-paragraph">Orbit أداة <strong>مفتوحة المصدر</strong> تعمل بالكامل في متصفحك للتفاعل مع GitHub API. لا تتطلب تسجيلًا، ولا تملك سيرفرات، ولا تجمع أي بيانات.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title ok"><i class="oi oi-check-square"></i><span>الترخيص (MIT)</span></div>
+            <ul class="policy-items">
+              <li>يُسمح بـ <strong>الاستخدام التجاري</strong></li>
+              <li>يُسمح بـ <strong>التعديل والتوزيع</strong></li>
+              <li>يُسمح بـ <strong>الاستخدام الخاص</strong></li>
+              <li>بشرط <strong>الاحتفاظ بحقوق النشر</strong> والترخيص</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title warn"><i class="oi oi-user"></i><span>مسؤولياتك</span></div>
+            <ul class="policy-items">
+              <li>أنت <strong>المسؤول الوحيد</strong> عن المحتوى الذي ترفعه إلى GitHub</li>
+              <li>أنت المسؤول عن <strong>حماية التوكن</strong> الخاص بك</li>
+              <li>الالتزام بـ <strong>شروط استخدام GitHub</strong> وسياساتها</li>
+              <li>عدم استخدام الأداة في أي نشاط مخالف للقانون</li>
+              <li>عدم محاولة إساءة استخدام خدمة GitHub عبر هذه الأداة</li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title danger"><i class="oi oi-alert"></i><span>حدود المسؤولية</span></div>
+            <ul class="policy-items">
+              <li>البرنامج يُقدَّم <strong>"كما هو"</strong> بدون أي ضمانات</li>
+              <li>لا نضمن عدم انقطاع الخدمة أو خلوها من الأخطاء</li>
+              <li><strong>لا نتحمل مسؤولية</strong> فقدان بيانات أو أضرار ناتجة عن الاستخدام</li>
+              <li>لا نتحمل مسؤولية أي إجراء يتخذه GitHub على حسابك</li>
+              <li>استخدامك للأداة على <strong>مسؤوليتك الكاملة</strong></li>
+            </ul>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title info"><i class="oi oi-shield"></i><span>التعويض</span></div>
+            <p class="policy-paragraph">أنت توافق على تعويض مطوّر Orbit وإبراء ذمّته من أي مطالبات أو أضرار تنشأ عن استخدامك للأداة أو انتهاكك لهذه الشروط.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title"><i class="oi oi-x-circle"></i><span>الإنهاء</span></div>
+            <p class="policy-paragraph">يمكنك التوقف عن استخدام Orbit في أي وقت. لا حاجة لأي إجراء — فقط أغلق الصفحة أو امسح البيانات المحلية.</p>
+          </div>
+          <div class="policy-group">
+            <div class="policy-group-title"><i class="oi oi-clock"></i><span>التعديلات</span></div>
+            <p class="policy-paragraph">قد تُحدَّث هذه الشروط مستقبلًا. استمرارك في استخدام التطبيق بعد التحديث يُعدّ موافقة ضمنية على الشروط الجديدة. آخر تحديث: 2026.</p>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="faq">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-help"></i><span>الأسئلة الشائعة</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="faq-group">
+          <div class="faq-group-title">الإعداد</div>
+          <div class="faq-item"><div class="faq-q"><span>كيف أحصل على التوكن؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div>اذهب إلى <strong>github.com/settings/tokens</strong> → Generate new token → اختر الصلاحية <code>repo</code> → انسخ التوكن والصقه.</div></div></div>
+          <div class="faq-item"><div class="faq-q"><span>لماذا لا أرى مستودعاتي؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div>بعد التحقق، يتم جلب <strong>كل مستودعاتك</strong> تلقائيًا. اضغط "تحديث" إن لم تظهر، وتأكد أن التوكن فيه صلاحية <code>repo</code>.</div></div></div>
+          <div class="faq-item"><div class="faq-q"><span>هل يجب أن أحفظ التوكن؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div><strong>لا</strong> — اختياري. بدونه يُمسح عند إغلاق الصفحة. معه يُحفظ 30 يومًا — للأجهزة الشخصية فقط.</div></div></div>
+        </div>
+        <div class="faq-group">
+          <div class="faq-group-title">الرفع</div>
+          <div class="faq-item"><div class="faq-q"><span>كيف أرفع مشروعًا كاملًا؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div><ul><li>اختر مستودعًا من قسم الرفع</li><li>"اختر مجلد" → اختر مجلد المشروع</li><li>اترك "المسار" فارغًا للرفع في الجذر</li><li>اضغط "ابدأ الرفع"</li></ul></div></div></div>
+          <div class="faq-item"><div class="faq-q"><span>هل يُرفع node_modules و .git؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div><strong>لا</strong> — تُستثنى تلقائيًا: <code>.git</code>، <code>node_modules</code>، <code>dist</code>، <code>build</code>، وغيرها.</div></div></div>
+          <div class="faq-item"><div class="faq-q"><span>ما فائدة الرفع كـ ZIP؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div>يضغط كل الملفات المحددة في ملف <code>.zip</code> واحد ويُرفعه في commit واحد. أسرع بكتير لو عندك مئات الملفات الصغيرة.</div></div></div>
+        </div>
+        <div class="faq-group">
+          <div class="faq-group-title">التحكم</div>
+          <div class="faq-item"><div class="faq-q"><span>كيف أنقل ملفًا أو مجلدًا؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div>اضغط زر "نقل" على أي ملف/مجلد → اختر المستودع والمجلد الهدف → "إفلات هنا".</div></div></div>
+          <div class="faq-item"><div class="faq-q"><span>هل يمكنني إعادة تسمية مجلد؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div>نعم — اضغط زر ✏️ على المجلد → اكتب الاسم الجديد → تعديل. سيتم تحديث كل المسارات داخله تلقائيًا.</div></div></div>
+        </div>
+        <div class="faq-group">
+          <div class="faq-group-title">ما يميز Orbit</div>
+          <div class="faq-item"><div class="faq-q"><span>لماذا أستخدم Orbit بدل GitHub؟</span><i class="oi oi-chevron-down"></i></div><div class="faq-a"><div><ul><li><strong>رفع مجلد كامل بضغطة</strong></li><li><strong>لا git ولا terminal</strong> — واجهة بصرية 100%</li><li><strong>كل شيء في صفحة واحدة</strong></li><li><strong>محرر مدمج</strong> بكل اللغات</li><li><strong>نسخ / نقل / إعادة تسمية</strong></li><li><strong>رفع ZIP</strong> للمشاريع الكبيرة</li><li><strong>أرشيف محلي</strong> مع تصدير JSON</li><li><strong>ثيم ليلي ونهاري</strong></li></ul></div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="shortcuts">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-keyboard"></i><span>الاختصارات</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="shortcut-row"><span class="shortcut-label">فتح / إغلاق الإعدادات</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-label">التبديل بين التبويبات</span><span class="shortcut-keys"><kbd>Alt</kbd><kbd>1-9</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-label">حفظ في المحرر</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>S</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-label">إغلاق النوافذ</span><span class="shortcut-keys"><kbd>Esc</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-label">بدء الرفع</span><span class="shortcut-keys"><kbd>Ctrl</kbd><kbd>Enter</kbd></span></div>
+      </div></div>
+    </div>
+
+    <div class="drawer-section" data-section="about">
+      <button class="drawer-section-head" type="button">
+        <span class="section-left"><i class="oi oi-info-circle"></i><span>عن التطبيق</span></span>
+        <i class="oi chev oi-chevron-down"></i>
+      </button>
+      <div class="drawer-section-body"><div class="inner">
+        <div class="about-block">
+          <div class="about-logo"><img src="logo.svg" alt="Orbit"></div>
+          <div class="about-info">
+            <div class="about-name">Orbit</div>
+            <div class="about-version">v2.2.0</div>
+          </div>
+        </div>
+        <div class="about-desc">أداة رفع وإدارة مشاريع GitHub — بدون سيرفر، بدون مكتبات. مفتوح المصدر تحت رخصة <code>MIT</code>.</div>
+        <div class="about-author"><i class="oi oi-user"></i><span>صُنع بواسطة <strong>Fix "Yousef"</strong></span></div>
+      </div></div>
+    </div>
+
+  </div>
+</aside>
+
+<!-- ═══════════ Modals ═══════════ -->
+
+<div class="modal-bg" id="editorModal">
+  <div class="modal lg editor-modal">
+    <div class="modal-header editor-header">
+      <h3 class="modal-title"><span class="editor-title-badge" id="editorTitleBadge" data-lang="txt">TXT</span><span class="editor-title-name" id="editorTitleName">ملف جديد</span></h3>
+      <div class="editor-header-actions">
+        <button class="btn btn-default btn-sm" id="editorCancelBtn" type="button">إلغاء</button>
+        <button class="btn btn-primary btn-sm" id="editorSaveBtn" type="button"><i class="oi oi-check"></i><span>حفظ</span></button>
+        <button class="modal-close" id="editorCloseBtn" type="button"><i class="oi oi-x"></i></button>
+      </div>
+    </div>
+    <div class="modal-body flush editor-body">
+      <div class="editor-target-bar">
+        <div class="editor-target-group"><label class="editor-target-label">المستودع</label><button type="button" class="picker-btn picker-btn-sm" id="editorRepoPickerBtn"><span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="editorRepoText">—</span></span><i class="oi oi-chevron-down"></i></button></div>
+        <div class="editor-target-group"><label class="editor-target-label">المجلد</label><button type="button" class="picker-btn picker-btn-sm" id="editorFolderPickerBtn"><span class="picker-value"><i class="oi oi-folder"></i><span class="picker-text" id="editorFolderText">الجذر (/)</span></span><i class="oi oi-chevron-down"></i></button></div>
+      </div>
+      <div class="path-bar" id="pathBar">
+        <div class="path-chips" id="pathChips"></div>
+        <input type="text" id="editorPath" class="path-input" placeholder="filename.ext" dir="ltr" autocomplete="off" spellcheck="false">
+      </div>
+      <div id="editorContent" class="cm-host is-loading" dir="ltr"></div>
+      <div class="editor-commit-panel hidden" id="editorCommitPanel">
+        <div class="editor-commit-inner">
+          <div class="editor-commit-icon"><i class="oi oi-commit"></i></div>
+          <input type="text" id="editorCommit" class="editor-commit-input" placeholder="اكتب رسالة الـ commit ثم اضغط Enter" dir="rtl" autocomplete="off">
+          <button class="btn btn-primary" id="editorCommitConfirmBtn" type="button"><i class="oi oi-check"></i><span>تأكيد الحفظ</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="editorFolderModal">
+  <div class="modal lg">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-folder"></i><span>اختر المجلد الهدف</span></h3><button class="modal-close" id="efCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="fp-section"><label class="fp-label">المسار الحالي</label><div class="fp-path" id="efPath"></div></div>
+      <div class="fp-section"><label class="fp-label">محتوى المجلد</label><div class="fp-contents" id="efContents"></div></div>
+      <div class="fp-section" style="margin-top:14px;margin-bottom:0"><label class="fp-label">أو اكتب مسارًا جديدًا</label><input type="text" id="efManualInput" placeholder="مثال: src/components" dir="ltr"></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="efCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="efConfirmBtn" type="button"><i class="oi oi-corner-down-right"></i><span>اختر هذا المجلد</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="archiveDetailModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-history"></i><span id="archiveDetailTitleText">—</span></h3><button class="modal-close" id="archiveDetailCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body" id="archiveDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" id="archiveDetailDeleteBtn" type="button"><i class="oi oi-trash"></i><span>حذف</span></button>
+      <button class="btn btn-default" id="archiveDetailCloseBtn2" type="button">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="pickerModal">
+  <div class="modal sm">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-list" id="pickerTitleIcon"></i><span id="pickerTitle">—</span></h3><button class="modal-close" id="pickerCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body"><div class="picker-list" id="pickerList"></div></div>
+    <div class="modal-footer"><button class="btn btn-default" id="pickerCancelBtn" type="button">إلغاء</button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="newRepoModal">
+  <div class="modal sm">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-plus"></i><span>مستودع جديد</span></h3><button class="modal-close" id="newRepoCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label" for="newRepoNameInput2">اسم المستودع <span class="req">*</span></label><input id="newRepoNameInput2" type="text" placeholder="my-new-repo" dir="ltr"></div>
+      <div class="form-group"><label class="chk"><input type="checkbox" id="newRepoPrivateCb" checked><span>مستودع خاص</span></label></div>
+      <div class="flash flash-info" style="margin:0"><i class="oi oi-info-circle"></i><div>سيُنشأ المستودع مباشرة على GitHub.</div></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="newRepoCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="newRepoCreateBtn" type="button"><i class="oi oi-check"></i><span>إنشاء</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="newBranchModal">
+  <div class="modal sm">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-git-branch-plus"></i><span>فرع جديد</span></h3><button class="modal-close" id="newBranchCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label" for="newBranchName">اسم الفرع</label><input id="newBranchName" type="text" placeholder="feature/xyz" dir="ltr"></div>
+      <div class="form-group"><label class="form-label">من الفرع</label><button type="button" class="picker-btn" id="newBranchFromBtn"><span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="newBranchFromText">main</span></span><i class="oi oi-chevron-down"></i></button></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="newBranchCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="newBranchCreateBtn" type="button"><i class="oi oi-check"></i><span>إنشاء</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="folderPickerModal">
+  <div class="modal lg">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-copy" id="fpModeIcon"></i><span id="fpModeTitle">—</span></h3><button class="modal-close" id="fpCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="fp-section"><label class="fp-label">المستودع الهدف</label><button type="button" class="picker-btn" id="fpRepoBtn"><span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="fpRepoText">—</span></span><i class="oi oi-chevron-down"></i></button></div>
+      <div class="fp-section"><label class="fp-label">المسار الحالي</label><div class="fp-path" id="fpPath"></div></div>
+      <div class="fp-section"><label class="fp-label">محتوى المجلد</label><div class="fp-contents" id="fpContents"></div></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="fpCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="fpConfirmBtn" type="button"><i class="oi oi-corner-down-right"></i><span id="fpConfirmText">إفلات هنا</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="renameFolderModal">
+  <div class="modal sm">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-edit"></i><span>تعديل اسم المجلد</span></h3><button class="modal-close" id="renameFolderCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">المسار الحالي</label><div class="path-preview" style="margin-top:0"><span class="value" id="renameOldPath" style="color:var(--fg-muted)">—</span></div></div>
+      <div class="form-group"><label class="form-label" for="renameFolderInput">الاسم الجديد</label><input type="text" id="renameFolderInput" placeholder="new-folder-name" dir="ltr" autocomplete="off"></div>
+      <div class="path-preview"><span class="label">سيصبح</span><span class="value" id="renameNewPath">—</span></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="renameFolderCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="renameFolderConfirmBtn" type="button"><i class="oi oi-check"></i><span>تعديل</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="uploadFolderModal">
+  <div class="modal lg">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-folder"></i><span>اختر المجلد الهدف</span></h3><button class="modal-close" id="ufCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="fp-section"><label class="fp-label">المسار الحالي</label><div class="fp-path" id="ufPath"></div></div>
+      <div class="fp-section"><label class="fp-label">محتوى المجلد</label><div class="fp-contents" id="ufContents"></div></div>
+      <div class="fp-section" style="margin-top:14px;margin-bottom:0"><label class="fp-label">أو اكتب مسارًا جديدًا</label><input type="text" id="ufManualInput" placeholder="مثال: src/components" dir="ltr"></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="ufCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="ufConfirmBtn" type="button"><i class="oi oi-corner-down-right"></i><span>اختر هذا المجلد</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="newPRModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-pr"></i><span>طلب سحب جديد</span></h3><button class="modal-close" id="newPRCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label" for="prTitle">العنوان</label><input id="prTitle" type="text"></div>
+      <div class="form-group"><label class="form-label" for="prBody">الوصف</label><textarea id="prBody" rows="4"></textarea></div>
+      <div class="form-group"><label class="form-label">من فرع</label><button type="button" class="picker-btn" id="prHeadBtn"><span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="prHeadText">—</span></span><i class="oi oi-chevron-down"></i></button></div>
+      <div class="form-group"><label class="form-label">إلى فرع</label><button type="button" class="picker-btn" id="prBaseBtn"><span class="picker-value"><i class="oi oi-branch"></i><span class="picker-text" id="prBaseText">—</span></span><i class="oi oi-chevron-down"></i></button></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="newPRCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="newPRCreateBtn" type="button"><i class="oi oi-check"></i><span>إنشاء</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="newIssueModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-issue"></i><span>بلاغ جديد</span></h3><button class="modal-close" id="newIssueCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label" for="issueTitle">العنوان</label><input id="issueTitle" type="text"></div>
+      <div class="form-group"><label class="form-label" for="issueBody">الوصف</label><textarea id="issueBody" rows="5"></textarea></div>
+      <div class="form-group"><label class="form-label" for="issueLabels">التصنيفات</label><input id="issueLabels" type="text" placeholder="bug, enhancement" dir="ltr"></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="newIssueCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="newIssueCreateBtn" type="button"><i class="oi oi-check"></i><span>إنشاء</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="newReleaseModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-tag"></i><span>إصدار جديد</span></h3><button class="modal-close" id="newReleaseCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label" for="releaseTag">Tag</label><input id="releaseTag" type="text" placeholder="v1.0.0" dir="ltr"></div>
+      <div class="form-group"><label class="form-label" for="releaseName">اسم الإصدار</label><input id="releaseName" type="text"></div>
+      <div class="form-group"><label class="form-label" for="releaseBody">ملاحظات</label><textarea id="releaseBody" rows="5"></textarea></div>
+      <div class="form-group"><label class="chk"><input type="checkbox" id="releasePrerelease"><span>إصدار تجريبي</span></label></div>
+      <div class="form-group"><label class="chk"><input type="checkbox" id="releaseDraft"><span>مسودة</span></label></div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-default" id="newReleaseCancelBtn" type="button">إلغاء</button><button class="btn btn-primary" id="newReleaseCreateBtn" type="button"><i class="oi oi-check"></i><span>إنشاء</span></button></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="prDetailModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-pr"></i><span id="prDetailTitle">—</span></h3><button class="modal-close" id="prDetailCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body" id="prDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" id="prCloseBtn" type="button"><i class="oi oi-x-circle"></i><span>إغلاق الطلب</span></button>
+      <button class="btn btn-success" id="prMergeBtn" type="button"><i class="oi oi-merge"></i><span>دمج</span></button>
+      <button class="btn btn-default" id="prDetailCloseBtn2" type="button">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="issueDetailModal">
+  <div class="modal">
+    <div class="modal-header"><h3 class="modal-title"><i class="oi oi-issue"></i><span id="issueDetailTitle">—</span></h3><button class="modal-close" id="issueDetailCloseBtn" type="button"><i class="oi oi-x"></i></button></div>
+    <div class="modal-body" id="issueDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" id="issueCloseBtn" type="button"><i class="oi oi-x-circle"></i><span>إغلاق البلاغ</span></button>
+      <button class="btn btn-success hidden" id="issueReopenBtn" type="button"><i class="oi oi-check-circle"></i><span>إعادة فتح</span></button>
+      <button class="btn btn-default" id="issueDetailCloseBtn2" type="button">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="confirmModal">
+  <div class="modal sm confirm-modal">
+    <div class="modal-header">
+      <h3 class="modal-title"><i class="oi oi-alert" id="confirmIcon"></i><span id="confirmTitle">تأكيد</span></h3>
+      <button class="modal-close" id="confirmCloseBtn" type="button"><i class="oi oi-x"></i></button>
+    </div>
+    <div class="modal-body"><p class="confirm-message" id="confirmMessage">هل أنت متأكد؟</p></div>
+    <div class="modal-footer">
+      <button class="btn btn-default" id="confirmCancelBtn" type="button">إلغاء</button>
+      <button class="btn btn-danger" id="confirmOkBtn" type="button"><i class="oi oi-check"></i><span id="confirmOkText">حسنًا</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--bg-elevated);border:1px solid var(--border-strong);color:var(--fg);padding:10px 20px;border-radius:99px;font-size:13px;font-weight:600;z-index:11000;box-shadow:0 8px 32px rgba(0,0,0,.6);display:none;align-items:center;gap:8px;max-width:92vw"></div>
+
+<input type="file" id="folderInput" webkitdirectory directory multiple style="display:none">
+<input type="file" id="filesInput" multiple style="display:none">
+
+<script type="module">
+Promise.all([
+  import('https://esm.sh/codemirror@6.0.1'),
+  import('https://esm.sh/@codemirror/state@6'),
+  import('https://esm.sh/@codemirror/lang-html@6'),
+  import('https://esm.sh/@codemirror/lang-css@6'),
+  import('https://esm.sh/@codemirror/lang-javascript@6'),
+  import('https://esm.sh/@codemirror/theme-one-dark@6'),
+  import('https://esm.sh/@codemirror/view@6'),
+  import('https://esm.sh/@codemirror/commands@6'),
+]).then(function (mods) {
+  var cm=mods[0],state=mods[1],htmlM=mods[2],cssM=mods[3],jsM=mods[4],theme=mods[5],view=mods[6],commands=mods[7];
+  var EditorView=cm.EditorView,basicSetup=cm.basicSetup,EditorState=state.EditorState,Compartment=state.Compartment;
+  var oneDark=theme.oneDark,keymap=view.keymap,indentWithTab=commands.indentWithTab;
+  var langComp=new Compartment(),editableComp=new Compartment();
+  var LANG_MAP={HTML:()=>htmlM.html(),CSS:()=>cssM.css(),JS:()=>jsM.javascript(),JSX:()=>jsM.javascript({jsx:true}),TS:()=>jsM.javascript({typescript:true}),TSX:()=>jsM.javascript({typescript:true,jsx:true}),JSON:()=>jsM.javascript(),MD:()=>[],SVG:()=>htmlM.html(),XML:()=>htmlM.html(),YAML:()=>[],TXT:()=>[]};
+  var host=document.getElementById('editorContent');
+  if(!host) return;
+  var changeFn=null;
+  var editor=new EditorView({parent:host,state:EditorState.create({doc:'',extensions:[
+    basicSetup,oneDark,keymap.of([indentWithTab]),langComp.of([]),editableComp.of(EditorView.editable.of(true)),
+    EditorView.updateListener.of(u=>{if(u.docChanged&&changeFn) changeFn();}),
+    EditorView.theme({'&':{height:'100%',fontSize:'12.5px',backgroundColor:'#0a0a0a'},'.cm-scroller':{overflow:'auto'},'.cm-content':{padding:'10px 0'}})
+  ]})});
+  setTimeout(()=>{var s=host.querySelector('.cm-scroller');if(s) s.style.background='#0a0a0a';},0);
+  window.__orbitCM={
+    view:editor,
+    getValue:()=>editor.state.doc.toString(),
+    setValue:v=>{editor.dispatch({changes:{from:0,to:editor.state.doc.length,insert:v||''}});editor.scrollDOM.scrollTop=0;},
+    setLang:name=>editor.dispatch({effects:langComp.reconfigure((LANG_MAP[name]||LANG_MAP.TXT)())}),
+    setDisabled:d=>editor.dispatch({effects:editableComp.reconfigure(EditorView.editable.of(!d))}),
+    focus:()=>editor.focus(),
+    onChange:fn=>{changeFn=fn;}
+  };
+  host.classList.remove('is-loading');
+  window.dispatchEvent(new Event('orbit-cm-ready'));
+}).catch(function(err){
+  console.error('[Orbit] CodeMirror load failed:',err);
+  var host=document.getElementById('editorContent');
+  if(host){host.classList.remove('is-loading');host.innerHTML='<div style="padding:20px;color:#f87171;font-size:12px">CodeMirror failed: '+(err&&err.message?err.message:'unknown')+'</div>';}
+  window.dispatchEvent(new Event('orbit-cm-failed'));
+});
+</script>
+
+<script src="js/core.js"></script>
+<script src="js/api.js"></script>
+<script src="js/repos.js"></script>
+<script src="js/upload.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/remote.js"></script>
+<script src="js/community.js"></script>
+<script>window.Orbit.init();</script>
+
+</body>
+</html>

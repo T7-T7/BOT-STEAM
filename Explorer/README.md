@@ -114,6 +114,6 @@
 <br>
 
 <div align="center">
-  <p>صُنعت بعناية ✦ كل لون بسطر واحد</p>
+  <p>صُنع بواسطة Fix "Yousef" ⚜️</p>
   <a href="#readme-top">العودة إلى الأعلى <img src="https://api.iconify.design/mdi:arrow-up.svg?color=%23D60201" width="20" align="center" /></a>
 </div>

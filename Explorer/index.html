@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bmg Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>مستكشف<span class="dot-picked" id="dotPicked"></span> صيغ الألوان</h1>
+      <p>كل لون ليه عِدّة صيغ — ضيف لون واستكشف كل صيغ</p>
+    </header>
+
+    <section class="hero-panel">
+      <div class="preview" id="preview">
+        <div class="preview-fill" id="previewFill"></div>
+        <span class="preview-label" id="previewLabel">rgba(41, 41, 41, 0.5)</span>
+      </div>
+
+      <div class="controls">
+        <div class="input-row">
+          <input id="colorInput" dir="ltr" type="text" spellcheck="false" autocomplete="off" placeholder="rgba(41, 41, 41, 0.5)   أو   #454545" />
+          <button id="pickBtn" class="icon-btn" type="button" title="منتقي الألوان" aria-label="منتقي الألوان">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.8 1.7-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7h1.3A4.3 4.3 0 0 0 21 10.9C21 6.5 17 3 12 3Z"/>
+              <circle cx="7.5" cy="11.5" r="1.1" fill="currentColor" stroke="none"/>
+              <circle cx="10.5" cy="7.5" r="1.1" fill="currentColor" stroke="none"/>
+              <circle cx="15" cy="7.8" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+            <input type="color" id="nativePicker" value="#454545" />
+          </button>
+        </div>
+
+        <div class="alpha-row">
+          <div class="alpha-head">
+            <span>الشفافية</span>
+            <span class="alpha-val" id="alphaVal">50%</span>
+          </div>
+          <input type="range" id="alphaSlider" min="0" max="100" value="50" />
+        </div>
+
+        <div class="examples" id="examples">
+          <button type="button" class="chip" data-c="#454545">#454545</button>
+          <button type="button" class="chip" data-c="rgba(41, 41, 41, 0.5)">rgba(41, 41, 41, 0.5)</button>
+          <button type="button" class="chip" data-c="hsl(210 80% 45%)">hsl(210 80% 45%)</button>
+          <button type="button" class="chip" data-c="cmyk(0, 40, 100, 0)">cmyk(0, 40, 100, 0)</button>
+          <button type="button" class="chip" data-c="tomato">tomato</button>
+        </div>
+
+        <p class="error" id="error" role="alert"></p>
+        <p class="hint">مدعوم: HEX · RGB(A) · HSL(A) · HSV(A) · HWB · CMYK · أسماء ألوان CSS</p>
+      </div>
+    </section>
+
+    <nav class="tabs" role="tablist" aria-label="أقسام النتائج">
+      <button class="tab active" data-tab="css" role="tab" aria-selected="true">صيغ CSS <span class="tab-count" id="countCss">0</span></button>
+      <button class="tab" data-tab="sci" role="tab" aria-selected="false">صيغ علمية <span class="tab-count" id="countSci">0</span></button>
+      <button class="tab" data-tab="extra" role="tab" aria-selected="false">قيم إضافية <span class="tab-count" id="countExtra">0</span></button>
+      <button class="tab" data-tab="alpha" role="tab" aria-selected="false">درجات الشفافية</button>
+      <button class="tab" data-tab="contrast" role="tab" aria-selected="false">التباين</button>
+      <button class="tab" data-tab="harmony" role="tab" aria-selected="false">التناغم</button>
+    </nav>
+
+    <div class="tab-panels">
+      <div class="tab-panel active" id="panel-css" role="tabpanel"><div class="grid" id="gridCss"></div></div>
+      <div class="tab-panel" id="panel-sci" role="tabpanel"><div class="grid" id="gridSci"></div></div>
+      <div class="tab-panel" id="panel-extra" role="tabpanel"><div class="grid" id="gridExtra"></div></div>
+      <div class="tab-panel" id="panel-alpha" role="tabpanel"><div class="alpha-variants" id="alphaVariants"></div></div>
+      <div class="tab-panel" id="panel-contrast" role="tabpanel"><div class="contrast-row" id="contrastRow"></div></div>
+      <div class="tab-panel" id="panel-harmony" role="tabpanel"><div class="harmonies" id="harmonies"></div></div>
+    </div>
+
+    <footer class="footer">© 2026 BMG, Inc.</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
